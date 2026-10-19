@@ -10,9 +10,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.weatherapp.components.AppTopBar
 import com.example.weatherapp.navigation.AppNavigation
@@ -38,14 +40,21 @@ class MainActivity : ComponentActivity() {
 fun WeatherApp() {
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
+
+    val isManageCitiesScreen = currentRoute == Screen.ManageCitiesScreen.route
+
     Scaffold(
         modifier = Modifier
             .fillMaxSize()
             .background(SkyBlue),
         topBar = {
-            AppTopBar(
-                onAddCity = { navController.navigate(Screen.Home.route) },
-            )
+            if (!isManageCitiesScreen) {
+                AppTopBar(
+                    onAddCity = { navController.navigate(Screen.ManageCitiesScreen.route) },
+                )
+            }
         },
     ) { innerPadding ->
         AppNavigation(

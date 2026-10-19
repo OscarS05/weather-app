@@ -32,8 +32,12 @@ fun AppNavigation(
             )
         }
 
-        composable(route = Screen.Home.route) {
-            ManageCitiesScreen()
+        composable(route = Screen.ManageCitiesScreen.route) {
+            ManageCitiesScreen(
+                onBack = {
+                    navController.navigate(Screen.Home.route)
+                }
+            )
         }
     }
 }

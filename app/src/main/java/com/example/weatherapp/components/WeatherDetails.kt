@@ -23,7 +23,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.weatherapp.R
-import com.example.weatherapp.models.WeatherDetail
+import com.example.weatherapp.data.WeatherDetail
 import com.example.weatherapp.ui.theme.DarkBlue
 import com.example.weatherapp.ui.theme.Gray
 import com.example.weatherapp.ui.theme.LightGray

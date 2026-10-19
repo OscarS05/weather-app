@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.weatherapp.screens.HomeRoute
 import com.example.weatherapp.screens.HomeScreen
 import com.example.weatherapp.screens.ManageCitiesScreen
 
@@ -25,7 +26,7 @@ fun AppNavigation(
         modifier = modifier,
     ) {
         composable(route = Screen.Home.route) {
-            HomeScreen(
+            HomeRoute(
                 onAddCity = {
                     navController.navigate(Screen.ManageCitiesScreen.route)
                 }
